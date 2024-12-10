@@ -1,0 +1,22 @@
+version: '3.1'
+services:
+    db:
+        container_name: mdr-mariadb
+        image: mariadb
+        restart: always
+        environment:
+            MARIADB_ROOT_PASSWORD: qwer1234!@
+        volumes:
+            - /appdata/docker/mariadb:/var/lib/mysql
+        networks:
+            - my-bridge-network
+        ports:
+            - 3306:3306
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 9090:8080
+networks:
+    my-bridge-network:
+        external: true

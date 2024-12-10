@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  registry:
+    image: registry:latest
+    container_name: registry
+    volumes:
+      - /appdata/docker/registry:/var/lib/registry/docker/registry/v2
+    ports:
+      - 5000:5000
+    network_mode: host
+  registry-web:
+    image: hyper/docker-registry-web:latest
+    container_name: registry-web
+    volumes:
+      - ./registry-web/config/config.yml:/conf/config.yml
+      - /appdata/docker/registry-web:/data
+    ports:
+      - 8080:8080
+    network_mode: host

@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+    my-daily-reporter:
+        image: 192.168.45.100:5000/my-daily-reporter:latest
+        container_name: my-daily-reporter
+        networks:
+            - my-bridge-network
+        ports:
+            - 28080:28080
+        restart: always
+networks:
+    my-bridge-network:
+        external: true
