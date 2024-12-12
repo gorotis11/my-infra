@@ -3,7 +3,7 @@ version: '3'
 services:
   registry:
     image: registry:latest
-    container_name: registry
+    container_name: docker-registry
     volumes:
       - /appdata/docker/registry:/var/lib/registry/docker/registry/v2
     ports:
