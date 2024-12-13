@@ -9,7 +9,8 @@ RUN apt-get update \
  && apt-get update \
  && apt-get -y install docker-ce docker-ce-cli docker-compose-plugin containerd.io
 
-RUN groupadd -f docker
-RUN usermod -aG docker jenkins
+RUN usermod -u 1000 jenkins && \
+    groupmod -g 984 docker && \
+    usermod -aG docker jenkins
 
 USER jenkins
